@@ -66,7 +66,7 @@ function update() {
 	$( ".main" ).each(function( index ) {
 		var height = Math.abs($(window).height()-360);
 		var width = Math.abs($(window).width()-640);
-		$(this).css("top",Math.floor((Math.random() * (height)) + 360)).css("left",Math.floor((Math.random() * (width)) + 1));
+		$(this).css("top",Math.floor((Math.random() * height) + 1)).css("left",Math.floor((Math.random() * width) + 1));
 		$(this).attr("class", "wind");
 	});
 }
