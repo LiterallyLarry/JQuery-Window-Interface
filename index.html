@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>JQuery Window Interface Test</title>
+<style>
+html,body {
+	top:0;
+	left:0;
+	margin:0;
+	padding:5;
+	overflow:hidden;
+	font-family: 'Noto Sans', sans-serif;
+	-webkit-background-size: 100%; 
+    -moz-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover;
+}
+#backgroundwebm
+{
+	position: fixed;
+}
+
+#backgroundwebm
+{
+	top:0%;
+	left:0%;
+	height:100%;
+	width:100%;
+}
+#top
+{
+	cursor: move;
+}
+</style>
+<link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+</head>
+<body>
+<div id="backgroundwebm">
+	<video class="stretch" loop autoplay>
+  		<source src="background.webm" type="video/webm" />
+	</video>
+</div>
+<div class="main" style="position:absolute;border:1px solid #bbbbbb;">
+<div id="window" style="position:relative;height:100%;width:100%;display:block;min-height:111px;min-width:111px;background:rgba(200,200,200,0.25)">
+	<div id="top" style="height:30px;background:rgba(200,200,200,0.25)">
+		<div id="title" style="position:absolute;left:0;padding-top:2px;padding-left:5px;font-size:20px;">Foreground Example (hold to drag)</div>
+		<div id="controls" style="position:absolute;right:0;"></div>
+	</div>
+	<div id="body" style="position:relative;">
+		<video style="height:360px;width:640px;" loop autoplay>
+			<source src="foreground.webm" type="video/webm" />
+		</video>
+	</div>
+</div>
+</div>
+<script>
+$(function() {
+	$( ".wind" ).draggable({ handle: "#top" });
+});
+function update() {
+	$( ".main" ).each(function( index ) {
+		var height = Math.abs($(window).height()-360);
+		var width = Math.abs($(window).width()-640);
+		$(this).css("top",Math.floor((Math.random() * (height)) + 360)).css("left",Math.floor((Math.random() * (width)) + 1));
+		$(this).attr("class", "wind");
+	});
+}
+update();
+</script>
+</body>
+</html>
